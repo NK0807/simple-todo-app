@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>ToDoアプリ</title>
 </head>
 <body>
     <h1>ToDoリスト</h1>
-    <p>これからここにタスクが表示されます。</p>
+
+    <table border="1" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>タスク内容</th>
+                <th>状態</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="task : ${tasks}">
+                <td th:text="${task.id}"></td>
+                <td th:text="${task.title}"></td>
+                <td th:text="${task.status}"></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>

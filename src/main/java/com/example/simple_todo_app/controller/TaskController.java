@@ -1,14 +1,30 @@
 package com.example.simple_todo_app.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-// ↓ RestController ではなく Controller にします
+import com.example.simple_todo_app.entity.Task;
+import com.example.simple_todo_app.service.TaskService;
+
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor	// Serviceを使うため
 public class TaskController {
 
+	private final TaskService service;
+	
     @GetMapping("/")
-    public String index() {
+    public String index(Model model) {
+    	// タスク一覧をもらう
+        List<Task> taskList = service.findAll();
+        
+        //HTMLに渡すための箱(Model)に、"tasks" という名前で入れる
+        model.addAttribute("tasks", taskList);
+        
         return "index";
     }
 }
