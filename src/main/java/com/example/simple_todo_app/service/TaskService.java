@@ -19,4 +19,9 @@ public class TaskService {
     public List<Task> findAll() {
         return repository.findAll();
     }
+
+    // 保存する機能
+    public void save(Task task) {
+        repository.save(task);
+    }
 }
