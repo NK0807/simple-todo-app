@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.simple_todo_app.entity.Task;
 import com.example.simple_todo_app.service.TaskService;
@@ -26,5 +28,14 @@ public class TaskController {
         model.addAttribute("tasks", taskList);
         
         return "index";
+    }
+
+    @PostMapping("/add")
+    public String add(@ModelAttribute Task task) {
+        // 新しいタスクを保存
+        task.setStatus("未完了");
+        service.save(task);
+        // トップページに戻る
+        return "redirect:/";
     }
 }
