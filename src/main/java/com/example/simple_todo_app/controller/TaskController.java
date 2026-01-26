@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.simple_todo_app.entity.Task;
 import com.example.simple_todo_app.service.TaskService;
@@ -35,6 +36,14 @@ public class TaskController {
         // 新しいタスクを保存
         task.setStatus("未完了");
         service.save(task);
+        // トップページに戻る
+        return "redirect:/";
+    }
+
+    @PostMapping("/update")
+    public String update(@RequestParam Integer id) {
+        // Serviceに「このIDのタスクの状態を変えて！」と依頼
+        service.updateStatus(id);
         // トップページに戻る
         return "redirect:/";
     }
