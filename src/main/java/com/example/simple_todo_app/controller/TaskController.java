@@ -47,4 +47,10 @@ public class TaskController {
         // トップページに戻る
         return "redirect:/";
     }
+
+    @PostMapping("/delete")
+    public String delete(@RequestParam Integer id) {
+        service.delete(id);
+        return "redirect:/";
+    }
 }
