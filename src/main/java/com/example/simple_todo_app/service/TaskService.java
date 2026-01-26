@@ -41,4 +41,9 @@ public class TaskService {
             repository.save(task);
         }
     }
+
+    // 削除する機能
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
 }
