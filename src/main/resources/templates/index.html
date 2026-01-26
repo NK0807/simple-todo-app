@@ -7,12 +7,18 @@
 <body>
     <h1>ToDoリスト</h1>
 
-    <table border="1" style="border-collapse: collapse;">
+    <form action="/add" method="post">
+        <input type="text" name="title" placeholder="新しいタスクを入力" required>
+        <button type="submit">追加</button>
+    </form>
+
+    <br> <table border="1" style="border-collapse: collapse;">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>タスク内容</th>
                 <th>状態</th>
+                <th>操作</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +26,18 @@
                 <td th:text="${task.id}"></td>
                 <td th:text="${task.title}"></td>
                 <td th:text="${task.status}"></td>
+                
+                <td>
+                    <form action="/update" method="post" style="display: inline;">
+                        <input type="hidden" name="id" th:value="${task.id}">
+                        <button type="submit">状態変更</button>
+                    </form>
+
+                    <form action="/delete" method="post" style="display: inline;">
+                        <input type="hidden" name="id" th:value="${task.id}">
+                        <button type="submit">削除</button>
+                    </form>
+                </td>
             </tr>
         </tbody>
     </table>
