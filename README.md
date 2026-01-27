@@ -26,7 +26,7 @@ Webアプリケーション開発の基本となるCRUD操作（作成・参照�
 
 1. リポジトリをクローンします。
 
-    git clone [https://github.com/あなたのユーザー名/simple-todo-app.git](https://github.com/NK0807/simple-todo-app.git)
+    git clone [https://github.com/NK0807/simple-todo-app.git](https://github.com/NK0807/simple-todo-app.git)
 
 2. ディレクトリに移動します。
 
